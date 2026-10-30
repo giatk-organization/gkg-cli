@@ -4,6 +4,7 @@
 
 import { configUICommand } from "./config-ui-command.js";
 import { handleGet } from "./phases/get-handler.js";
+import { handlePrefsResolve } from "./phases/prefs-resolve-handler.js";
 import { handleSet } from "./phases/set-handler.js";
 import { handleShow } from "./phases/show-handler.js";
 import type { ConfigCommandOptions, ConfigUIOptions } from "./types.js";
@@ -44,15 +45,26 @@ export async function configCommand(
 		return handleSet(keyOrOptions, valueOrOptions, options || {});
 	}
 
+	if (action === "prefs") {
+		const sub = typeof keyOrOptions === "string" ? keyOrOptions : undefined;
+		if (sub !== "resolve") {
+			console.error("Usage: ck config prefs resolve [--json]");
+			process.exitCode = 1;
+			return;
+		}
+		const prefsOpts = options || (typeof valueOrOptions === "object" ? valueOrOptions : {});
+		return handlePrefsResolve(prefsOpts as ConfigCommandOptions);
+	}
+
 	if (action === "show") {
 		const opts = typeof keyOrOptions === "object" ? keyOrOptions : options || {};
 		return handleShow(opts);
 	}
 
 	// Handle unknown actions (not undefined)
-	if (action && !["ui", "get", "set", "show"].includes(action)) {
+	if (action && !["ui", "get", "set", "show", "prefs"].includes(action)) {
 		console.error(`Unknown action: ${action}`);
-		console.error("Valid actions: get, set, show, ui");
+		console.error("Valid actions: get, set, show, ui, prefs");
 		process.exitCode = 1;
 		return;
 	}
