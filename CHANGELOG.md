@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/giatk-organization/gkg-cli/compare/v1.0.0...v1.0.1) (2026-10-31)
+
+### 🐞 Bug Fixes
+
+* **docs:** clarify GitHub token org-access requirement in installers ([f5e2a89](https://github.com/giatk-organization/gkg-cli/commit/f5e2a89b6b01bb9cf0a87578f1bd8f4f38a448b0))
+
 ## 1.0.0 (2026-10-31)
 
 ### ⚠ BREAKING CHANGES
