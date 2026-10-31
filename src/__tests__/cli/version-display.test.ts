@@ -121,7 +121,8 @@ describe("displayVersion", () => {
 				currentVersion: "2.16.0-beta.8",
 				latestVersion: "2.16.0-beta.9",
 				updateAvailable: true,
-				releaseUrl: "https://github.com/claudekit/claudekit-engineer/releases/tag/v2.16.0-beta.9",
+				releaseUrl:
+					"https://github.com/giatk-organization/gtkkit-engineer/releases/tag/v2.16.0-beta.9",
 			},
 			{ isGlobal: true, kitName: "engineer" },
 		);

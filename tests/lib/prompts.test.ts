@@ -59,7 +59,7 @@ describe("PromptsManager", () => {
 		test("AVAILABLE_KITS should be properly structured", () => {
 			expect(AVAILABLE_KITS.engineer).toBeDefined();
 			expect(AVAILABLE_KITS.marketing).toBeDefined();
-			expect(AVAILABLE_KITS.engineer.name).toBe("ClaudeKit Engineer");
+			expect(AVAILABLE_KITS.engineer.name).toBe("gkg Engineer");
 			expect(AVAILABLE_KITS.marketing.name).toBe("ClaudeKit Marketing");
 		});
 	});

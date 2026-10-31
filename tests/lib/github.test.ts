@@ -36,8 +36,8 @@ describe("GitHubClient", () => {
 	describe("integration scenarios", () => {
 		test("should handle kit configuration correctly", () => {
 			const engineerKit = AVAILABLE_KITS.engineer;
-			expect(engineerKit.owner).toBe("claudekit");
-			expect(engineerKit.repo).toBe("claudekit-engineer");
+			expect(engineerKit.owner).toBe("giatk-organization");
+			expect(engineerKit.repo).toBe("gtkkit-engineer");
 		});
 
 		test("should handle marketing kit configuration", () => {
