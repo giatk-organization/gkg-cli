@@ -119,6 +119,20 @@ export const configCommandHelp: CommandHelp = {
 			examples: [],
 			optionGroups: [],
 		},
+		{
+			name: "prefs resolve",
+			description:
+				"Print the fully resolved kit preferences (defaults <- global <- project) as JSON for hook scripts",
+			usage: "ck config prefs resolve [--json]",
+			examples: [
+				{
+					command: "ck config prefs resolve --json",
+					description:
+						"Emit resolved kit preferences as the schema-versioned JSON payload hooks consume",
+				},
+			],
+			optionGroups: [],
+		},
 	],
 	sections: [
 		{
