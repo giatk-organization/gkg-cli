@@ -62,7 +62,11 @@ export default {
 			"@semantic-release/git",
 			{
 				assets: ["package.json", "CHANGELOG.md", "cli-manifest.json", "docs/cli-reference.md"],
-				message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+				// Keep the commit message short: embedding nextRelease.notes blew past
+				// the OS argument limit (spawn E2BIG) on the first release, where the
+				// notes cover the whole history. Notes live in CHANGELOG.md and the
+				// GitHub release instead.
+				message: "chore(release): ${nextRelease.version} [skip ci]",
 			},
 		],
 		"@semantic-release/github",
