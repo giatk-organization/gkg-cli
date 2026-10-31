@@ -1,19 +1,55 @@
-# ClaudeKit Config UI
+# gkg CLI
 
-Command-line tool and web dashboard for managing ClaudeKit projects.
+Command-line tool and web dashboard for installing and managing **gkg engineer kits** — private kit releases published by `giatk-organization`.
 
-**Version**: 1.17.0
+> Both `gkg` and `ck` commands work (they are the same binary); the examples below use `gkg`.
+
+## Quick Start
+
+**Windows (PowerShell):**
+
+```powershell
+iwr https://raw.githubusercontent.com/giatk-organization/gkg-cli/main/install.ps1 -OutFile install.ps1
+.\install.ps1
+```
+
+**macOS / Linux:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/giatk-organization/gkg-cli/main/install.sh | bash
+```
+
+Or install directly with npm:
+
+```bash
+npm install -g gkg-cli
+```
+
+Then create your first project:
+
+```bash
+gkg new --kit engineer --dir my-project
+# the CLI prompts for your GitHub token on first download
+```
+
+## Prerequisites
+
+1. **Node.js >= 18** (npm ships with it)
+2. **Access to the kit repository**: you must be invited to `giatk-organization` with read access to `giatk-organization/gtkkit-engineer`
+3. **A GitHub Personal Access Token** with `repo` scope — the CLI prompts for it on first download (multi-tier auth: `gh` CLI → env vars → keychain → prompt)
+
+Without repository access, the CLI cannot download any kit releases.
 
 ## Overview
 
-ClaudeKit Config UI (`ck`) provides both CLI and web dashboard for managing ClaudeKit projects. It is built with Bun, TypeScript, and React for development, while the published CLI runs on plain Node.js so end users do not need Bun installed.
+gkg CLI provides both a CLI and a web dashboard for installing and managing gkg engineer kits. It is built with Bun, TypeScript, and React for development, while the published CLI runs on plain Node.js so end users do not need Bun installed.
 
 **Key Features:**
 - **CLI Commands (16)**: new, init, config, projects, setup, skills, agents, commands, migrate, doctor, versions, update, uninstall, watch, content, easter-egg
-- **Web Dashboard**: Interactive React UI via `ck config ui` for configuration and project management
-- **Hook Diagnostics Dashboard**: Inspect recent Claude hook activity and failures from `ck config` across global and project scopes
-- **Projects Registry**: Centralized registry at `~/.claudekit/projects.json` with file locking
-- **Skill Installation**: Install ClaudeKit skills to other coding agents (Cursor, Codex, etc.)
+- **Web Dashboard**: Interactive React UI via `gkg config ui` for configuration and project management
+- **Hook Diagnostics Dashboard**: Inspect recent Claude hook activity and failures from `gkg config` across global and project scopes
+- **Projects Registry**: Centralized registry with file locking
+- **Skill Installation**: Install gkg skills to other coding agents (Cursor, Codex, etc.)
 - **Multi-tier Authentication**: gh CLI → env vars → keychain → prompt fallback
 - **Smart Merging**: Conflict detection with user customization preservation
 - **Skills Migration**: Auto-detects and migrates skills structure changes
@@ -38,9 +74,9 @@ Comprehensive documentation in `/docs`:
 
 ## Prerequisites
 
-Before using ClaudeKit CLI, you need to:
+Before using gkg CLI, you need to:
 
-1. **Purchase a ClaudeKit Starter Kit** from [ClaudeKit.cc](https://claudekit.cc)
+1. **Purchase a gkg engineer kit** from `giatk-organization`
 2. **Get Repository Access**: After purchase, you'll receive access to the private GitHub repository containing your kit
 3. **Create a GitHub Personal Access Token** (PAT) with `repo` scope to download releases
 
@@ -48,32 +84,32 @@ Without a purchased kit and repository access, the CLI will not be able to downl
 
 ## Installation
 
-The ClaudeKit CLI is published on npm at [npmjs.com/package/claudekit-cli](https://www.npmjs.com/package/claudekit-cli).
+The gkg CLI is published on npm at [npmjs.com/package/gkg-cli](https://www.npmjs.com/package/gkg-cli).
 
-End-user runtime note: global installs from `npm`, `pnpm`, `yarn`, or `bun` all execute the packaged Node.js CLI. Bun is optional for users and only needed for local ClaudeKit CLI development workflows. Most commands do not require native build tools; `ck content` uses an optional SQLite driver and shows remediation steps if that driver is unavailable.
+End-user runtime note: global installs from `npm`, `pnpm`, `yarn`, or `bun` all execute the packaged Node.js CLI. Bun is optional for users and only needed for local gkg CLI development workflows. Most commands do not require native build tools; `ck content` uses an optional SQLite driver and shows remediation steps if that driver is unavailable.
 
 ### Using npm (Recommended)
 
 ```bash
-npm install -g claudekit-cli
+npm install -g gkg-cli
 ```
 
 ### Using Bun
 
 ```bash
-bun add -g claudekit-cli
+bun add -g gkg-cli
 ```
 
 ### Using Yarn
 
 ```bash
-yarn global add claudekit-cli
+yarn global add gkg-cli
 ```
 
 ### Using pnpm
 
 ```bash
-pnpm add -g claudekit-cli
+pnpm add -g gkg-cli
 ```
 
 After installation, verify it's working:
@@ -150,8 +186,8 @@ ck new --archive ~/downloads/engineer-v1.16.0.zip
 ck new --kit-path ~/extracted-kit/
 
 # Direct repo downloads are also supported
-ck new --archive ~/downloads/claudekit-engineer-main.zip
-ck new --kit-path ~/downloads/claudekit-engineer-main/
+ck new --archive ~/downloads/gtkkit-engineer-main.zip
+ck new --kit-path ~/downloads/gtkkit-engineer-main/
 ```
 
 **Flags:**
@@ -162,7 +198,7 @@ ck new --kit-path ~/downloads/claudekit-engineer-main/
 - `--archive <path>`: Use local archive (zip/tar.gz) instead of downloading
 - `--kit-path <path>`: Use local kit directory instead of downloading
 
-`--archive` and `--kit-path` both accept direct repo downloads with a single wrapper directory, including GitHub "Download ZIP" archives and extracted repo folders that still contain `claudekit-engineer-main/` or similar at the top level.
+`--archive` and `--kit-path` both accept direct repo downloads with a single wrapper directory, including GitHub "Download ZIP" archives and extracted repo folders that still contain `gtkkit-engineer-main/` or similar at the top level.
 
 ### Initialize or Update Project
 
@@ -196,8 +232,8 @@ ck init --archive ~/downloads/engineer-v1.16.0.zip
 ck init --kit-path ~/extracted-kit/
 
 # Direct repo downloads are also supported
-ck init --archive ~/downloads/claudekit-engineer-main.zip
-ck init --kit-path ~/downloads/claudekit-engineer-main/
+ck init --archive ~/downloads/gtkkit-engineer-main.zip
+ck init --kit-path ~/downloads/gtkkit-engineer-main/
 ```
 
 **Flags:**
@@ -209,13 +245,13 @@ ck init --kit-path ~/downloads/claudekit-engineer-main/
 - `--archive <path>`: Use local archive (zip/tar.gz) instead of downloading
 - `--kit-path <path>`: Use local kit directory instead of downloading
 
-`--archive` and `--kit-path` both accept direct repo downloads with a single wrapper directory, including GitHub "Download ZIP" archives and extracted repo folders that still contain `claudekit-engineer-main/` or similar at the top level.
+`--archive` and `--kit-path` both accept direct repo downloads with a single wrapper directory, including GitHub "Download ZIP" archives and extracted repo folders that still contain `gtkkit-engineer-main/` or similar at the top level.
 
 **Default Behavior with `-y` Flag:**
 
 | Prompt | Default |
 |--------|---------|
-| Select ClaudeKit | engineer (first option) |
+| Select gkg | engineer (first option) |
 | Target directory | Current directory (`.`) |
 | Version selection | Latest stable release |
 | Google Gemini setup | Skip |
@@ -223,7 +259,7 @@ ck init --kit-path ~/downloads/claudekit-engineer-main/
 
 ### Update CLI
 
-Keep the ClaudeKit CLI up to date:
+Keep the gkg CLI up to date:
 
 ```bash
 # Check for CLI updates
@@ -293,7 +329,7 @@ ck doctor --verbose --fix
 
 **Health Checks:**
 - **System**: Node.js, npm, Python, pip, Claude CLI, git, gh CLI
-- **ClaudeKit**: Global/project installation, versions, skills, skill listing budget, duplicate skill inventory
+- **gkg kits**: Global/project installation, versions, skills, skill listing budget, duplicate skill inventory
 - **Auth**: GitHub CLI authentication, repository access
 - **Project**: package.json, node_modules, lock files
 - **Modules**: Dynamic skill dependency resolution
@@ -306,7 +342,7 @@ ck doctor --verbose --fix
 | Corrupted node_modules | Reinstall dependencies |
 | Missing global install | Run `ck init --global` |
 | Missing skill deps | Install in skill directory |
-| Missing/low Engineer skill listing budget | Ensure computed `skillListingBudgetFraction` and a valid ClaudeKit-recommended `skillListingMaxDescChars` ceiling in project settings |
+| Missing/low Engineer skill listing budget | Ensure computed `skillListingBudgetFraction` and a valid kit-recommended `skillListingMaxDescChars` ceiling in project settings |
 
 `ck doctor` never writes `skillOverrides`, hides skills, or deletes duplicate skills automatically. It reports existing `skillOverrides` and inventory issues so all active project/global skills can stay user-invocable while listing pressure is managed through 200k-context-floor project settings and bounded descriptions.
 
@@ -318,7 +354,7 @@ ck doctor --verbose --fix
 
 ### Uninstall
 
-Remove ClaudeKit installations from your system:
+Remove gkg kit installations from your system:
 
 ```bash
 ck uninstall              # Interactive mode - prompts for scope and confirmation
@@ -334,22 +370,22 @@ ck uninstall --yes        # Non-interactive - skip confirmation (for scripts)
 - When both local and global installations exist, you'll be prompted to choose:
   - **Local only**: Remove from current project (`.claude/`)
   - **Global only**: Remove from user directory (`~/.claude/`)
-  - **Both**: Remove all ClaudeKit installations
+  - **Both**: Remove all gkg kit installations
 - When multiple kits are installed in the selected scope, interactive uninstall prompts for:
   - **Marketing kit only** or **Engineer kit only**: Remove one kit and preserve the other
-  - **All ClaudeKit kits**: Remove the full selected installation scope
+  - **All kits**: Remove the full selected installation scope
 - Use `--local` or `--global` flags to skip the prompt
 - Use `--kit engineer` or `--kit marketing` to skip the kit prompt
 
 **What it does:**
 - Detects local `.claude` directory in current project
-- Detects global `~/.claude` ClaudeKit installation
+- Detects global `~/.claude` gkg kit installation
 - Shows paths before deletion
 - Requires confirmation (unless `--yes` flag)
-- Removes ClaudeKit subdirectories (`commands/`, `agents/`, `skills/`, `workflows/`, `hooks/`, `metadata.json`)
+- Removes kit subdirectories (`commands/`, `agents/`, `skills/`, `workflows/`, `hooks/`, `metadata.json`)
 - **Preserves user configs** like `settings.json`, `settings.local.json`, and `CLAUDE.md`
 
-**Note:** Only removes valid ClaudeKit installations (with metadata.json). Regular `.claude` directories from Claude Desktop are not affected.
+**Note:** Only removes valid kit installations (with metadata.json). Regular `.claude` directories from Claude Desktop are not affected.
 
 ### Watch GitHub Issues (`ck watch`)
 
@@ -454,7 +490,7 @@ export CK_CACHE_TTL=1800         # 30 minutes
 
 ### Update Notifications
 
-The `ck --version` command checks for newer versions of your installed ClaudeKit and displays a notification if an update is available. The check is cached for 7 days to minimize API calls.
+The `ck --version` command checks for newer versions of your installed gkg CLI and displays a notification if an update is available. The check is cached for 7 days to minimize API calls.
 
 **Disable Update Notifications:**
 ```bash
@@ -550,10 +586,10 @@ ck init --verbose
 
 ## Available Kits
 
-ClaudeKit offers premium starter kits available for purchase at [ClaudeKit.cc](https://claudekit.cc):
+gkg kits are distributed from `giatk-organization`:
 
-- **engineer**: ClaudeKit Engineer - Engineering toolkit for building with Claude (v1.0.0+)
-- **marketing**: ClaudeKit Marketing - Content automation toolkit (v1.0.0 available)
+- **engineer**: gkg Engineer - Engineering toolkit for building with Claude
+- **marketing**: ClaudeKit Marketing - Content automation toolkit (upstream)
 
 Each kit provides a comprehensive project template with best practices, tooling, and workflows optimized for Claude Code development.
 
@@ -679,7 +715,7 @@ Note: The dev server starts automatically via `bun run dashboard:dev`. CI wiring
 ## FAQ
 
 **Q: Do I need GitHub CLI?**
-A: Yes, GitHub CLI is required. ClaudeKit uses it exclusively for authentication with private repositories.
+A: Yes, GitHub CLI is required. gkg CLI uses it exclusively for authentication with private repositories.
 
 **Q: How do I authenticate?**
 A: Run `gh auth login`, select 'Login with a web browser', complete OAuth in browser. Do NOT use 'Paste an authentication token'.
