@@ -488,6 +488,16 @@ Print merged config
 
 **Usage:** `ck config show [-g | -l] [--json]`
 
+### prefs resolve
+
+Print the fully resolved kit preferences (defaults <- global <- project) as JSON for hook scripts
+
+**Usage:** `ck config prefs resolve [--json]`
+
+**Examples:**
+
+- `ck config prefs resolve --json` — Emit resolved kit preferences as the schema-versioned JSON payload hooks consume
+
 
 ## ck content
 
@@ -1075,4 +1085,4 @@ Watch GitHub issues and auto-respond with AI analysis
 - `ck watch --interval 60000` — Poll every 60 seconds instead of default 30s
 
 
-<!-- generated: 2026-06-15T17:47:28.452Z -->
+<!-- generated: 2026-10-31T15:39:28.846Z -->

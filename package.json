@@ -1,6 +1,6 @@
 {
 	"name": "gkg-cli",
-	"version": "4.5.2",
+	"version": "1.0.0",
 	"description": "gkg CLI - install and manage gkg engineer kits",
 	"type": "module",
 	"repository": {

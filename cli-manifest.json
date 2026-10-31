@@ -1,6 +1,6 @@
 {
-	"version": "4.5.2",
-	"generatedAt": "2026-07-03T23:08:41.266Z",
+	"version": "1.0.0",
+	"generatedAt": "2026-10-31T15:39:28.732Z",
 	"commands": {
 		"agents": {
 			"name": "agents",
@@ -858,6 +858,18 @@
 					"description": "Print merged config",
 					"usage": "ck config show [-g | -l] [--json]",
 					"examples": [],
+					"optionGroups": []
+				},
+				{
+					"name": "prefs resolve",
+					"description": "Print the fully resolved kit preferences (defaults <- global <- project) as JSON for hook scripts",
+					"usage": "ck config prefs resolve [--json]",
+					"examples": [
+						{
+							"command": "ck config prefs resolve --json",
+							"description": "Emit resolved kit preferences as the schema-versioned JSON payload hooks consume"
+						}
+					],
 					"optionGroups": []
 				}
 			],
