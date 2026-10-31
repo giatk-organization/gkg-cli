@@ -50,9 +50,9 @@ export const DEFAULT_KIT_LAYOUT: KitLayout = {
 // Available kits
 export const AVAILABLE_KITS: Record<KitType, KitConfig> = {
 	engineer: {
-		name: "ClaudeKit Engineer",
-		repo: "claudekit-engineer",
-		owner: "claudekit",
+		name: "gkg Engineer",
+		repo: "gtkkit-engineer",
+		owner: "giatk-organization",
 		description: "Engineering toolkit for building with Claude",
 	},
 	marketing: {

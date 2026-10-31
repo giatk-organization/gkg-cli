@@ -69,11 +69,11 @@ const RELEASES_PER_PAGE = 100;
 
 /**
  * GitHub repo info for each kit type
- * SECURITY: Owner hardcoded to official ClaudeKit org to prevent supply chain attacks.
- * Users must fork the CLI if they need different upstream repos.
+ * SECURITY: Owner hardcoded to the kit publisher org to prevent supply chain
+ * attacks. Users must fork the CLI if they need different upstream repos.
  */
 const KIT_REPOS: Record<string, { owner: string; repo: string }> = {
-	engineer: { owner: "claudekit", repo: "claudekit-engineer" },
+	engineer: { owner: "giatk-organization", repo: "gtkkit-engineer" },
 	marketing: { owner: "claudekit", repo: "claudekit-marketing" },
 };
 

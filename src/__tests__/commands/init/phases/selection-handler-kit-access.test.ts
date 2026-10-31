@@ -271,7 +271,7 @@ describe("selection-handler kit access logic", () => {
 			const selectedKits: KitType[] = ["engineer", "marketing"];
 			const message = `Selected ${selectedKits.length} kits: ${selectedKits.map((k) => AVAILABLE_KITS[k].name).join(", ")}`;
 
-			expect(message).toBe("Selected 2 kits: ClaudeKit Engineer, ClaudeKit Marketing");
+			expect(message).toBe("Selected 2 kits: gkg Engineer, ClaudeKit Marketing");
 		});
 
 		it("throws error when no kits selected from multi-select", () => {
