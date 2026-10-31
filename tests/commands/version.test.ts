@@ -52,9 +52,9 @@ describe("Version Command", () => {
 	describe("Kit Configuration", () => {
 		test("should have engineer kit configured", () => {
 			const engineerKit = AVAILABLE_KITS.engineer;
-			expect(engineerKit.name).toBe("ClaudeKit Engineer");
-			expect(engineerKit.repo).toBe("claudekit-engineer");
-			expect(engineerKit.owner).toBe("claudekit");
+			expect(engineerKit.name).toBe("gkg Engineer");
+			expect(engineerKit.repo).toBe("gtkkit-engineer");
+			expect(engineerKit.owner).toBe("giatk-organization");
 		});
 
 		test("should have marketing kit configured", () => {
@@ -303,7 +303,7 @@ describe("Version Command", () => {
 
 			if (result.kit) {
 				const kitConfig = AVAILABLE_KITS[result.kit];
-				expect(kitConfig.repo).toBe("claudekit-engineer");
+				expect(kitConfig.repo).toBe("gtkkit-engineer");
 			}
 		});
 

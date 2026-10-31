@@ -349,8 +349,8 @@ describe("Types and Schemas", () => {
 	describe("AVAILABLE_KITS", () => {
 		test("should have engineer kit", () => {
 			expect(AVAILABLE_KITS.engineer).toBeDefined();
-			expect(AVAILABLE_KITS.engineer.name).toBe("ClaudeKit Engineer");
-			expect(AVAILABLE_KITS.engineer.repo).toBe("claudekit-engineer");
+			expect(AVAILABLE_KITS.engineer.name).toBe("gkg Engineer");
+			expect(AVAILABLE_KITS.engineer.repo).toBe("gtkkit-engineer");
 		});
 
 		test("should have marketing kit", () => {
