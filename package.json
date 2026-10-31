@@ -1,17 +1,18 @@
 {
-	"name": "claudekit-cli",
+	"name": "gkg-cli",
 	"version": "4.5.2",
-	"description": "CLI tool for bootstrapping and updating ClaudeKit projects",
+	"description": "gkg CLI - install and manage gkg engineer kits",
 	"type": "module",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/mrgoonie/claudekit-cli.git"
+		"url": "git+https://github.com/giatk-organization/gkg-cli.git"
 	},
 	"publishConfig": {
 		"access": "public",
 		"registry": "https://registry.npmjs.org"
 	},
 	"bin": {
+		"gkg": "bin/ck.js",
 		"ck": "bin/ck.js"
 	},
 	"files": [
